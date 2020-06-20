@@ -336,6 +336,7 @@
     PS>$pctags = (Get-MMePoSystemFind -SearchNameOnly compxy).Tags
     PS>$pctags
     Drive Encryption Uninstall, PCs, Windows10
+    The command lists the all tags associated with the computer / system compxy.
 
     PS>Remove-MMePoSystemClearTag -SystemName compxy -all
     OK: 1 of 1 cleared successfully.
