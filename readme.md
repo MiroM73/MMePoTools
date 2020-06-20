@@ -31,6 +31,26 @@
 ## Commandlets
 ### Connect/Disconnect
 #### Connect-MMePoServer
+
+    <#
+    .SYNOPSIS
+        Connect McAfee ePo server.
+    .DESCRIPTION
+        This command will create the variable $ePoVar in the module's context.
+    .EXAMPLE
+        PS C:\> Connect-MMePoServer -ServerName eposerver01 -Credential (Get-Credential eposerverAdmin -Message "Enter the password for eposerverAdmin")
+        The command sets the values in the variable $ePoVar:
+        ServerName       = eposerver01
+        Port             = 8443
+        URL              = "https://eposerver01:8443/remote"
+        Credential       = <entered credential)
+        SecurityProtocol = Enable-TLs12
+        Connected        = $false
+        The command will try to get the version of the ePo server by command Get-MMePoVersion.
+        If the Get-MMePoVersion returns the value, $ePoVar.Connected will change to $True
+        and it will display the info about the version on the user console.
+    #>
+
 #### Disconnect-MMePoServer
 
 ### ClientTask
