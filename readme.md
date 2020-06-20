@@ -389,8 +389,8 @@
 
     The initial command lists all duplicate systems in the ePo DB using ePo query, then groups them by the system names, and the result stores into the variable $dupl.
     The next command runs through array $dupl, gots all the systems with the same name, order them by LastUpdate property descending and the result saves into the temporary array $t.
-    Then we stake all the systems in the array $t except for the index 0 (the systems in the index 0 are the last communicated systems with the ePo server).
-    We get the ParentIDs from these systems at the end, and these ids we will use in the command Remove-MMePoSystemDelete.
+    Then we take the all systems from the array $t except for the index 0 (the systems in the index 0 are the last communicated systems with the ePo server).
+    At the end, we get the ParentIDs from these systems, and these IDs we will use in the command Remove-MMePoSystemDelete.
     #>
 
 #### Set-MMePoSystemApplyTag
