@@ -1,0 +1,21 @@
+- clienttask.export (DONE)
+- system.applyTag (DONE)
+- system.clearTag (DONE)
+- system.delete (DONE)
+- system.wakeupAgent
+- core.listTables
+- tasklog.listTaskHistory
+- tasklog.listMessages
+- tasklog.listSubtasks
+- clienttask.find (DONE)
+- clienttask.run (DONE)
+- execute own query
+  core.executeQuery target=<> [select=<>] [where=<>] [order=<>] [group=<>] [database=<>] [depth=<>] [joinTables=<>]
+  target - The SQUID target type to query. Optionally, the database type can be prepended to the target with a '.' (for example, databaseType.target)
+  select - The SQUID select clause of the query; if blank, all columns will be returned
+  where - The SQUID where clause of the query; if blank, all rows will be returned
+  order - The SQUID order-by clause of the query; if blank, database order will be returned
+  group - The SQUID group-by clause of the query; if blank, no grouping will be performed
+  database - The name of the remote database; if blank, the default database for the given database type will be used
+  depth - The SQUID depth to fetch sub results (default: 5)
+  joinTables - The comma-separated list of SQUID targets to join with the target type; * means join with all types
