@@ -44,7 +44,7 @@
         Port             = 8443
         URL              = "https://eposerver01:8443/remote"
         Credential       = <entered credential)
-        SecurityProtocol = Set-TLs12
+        SecurityProtocol = $([Net.ServicePointManager]::SecurityProtocol)
         Connected        = $false
         The command will try to get the version of the ePo server by command Get-MMePoVersion.
         If the Get-MMePoVersion returns the value, $ePoVar.Connected will change to $True
@@ -386,12 +386,12 @@
        is false.
     .EXAMPLE
     PS C:\>$dupl = Invoke-MMePoCoreExecuteQuery -Id 935 | group 'EPOLeafNode.NodeName' -NoElement | select -ExpandProperty name
-    PS C:\>$dupl | %{$t = (Get-MMePoSystemFind -SearchText $_ -SearchNameOnly | ? ComputerName -eq $_ | sort LastUpdate -Descending); Remove-MMePoSystemDelete -SystemID ($t[1..$t.count].parentid -join ',') | ft -autosize}
+    PS C:\>$dupl | %{$t = (Get-MMePoSystemFind -SearchText $_ -SearchNameOnly | ? ComputerName -eq $_ | sort LastUpdate -Descending)
+    PS C:\>Remove-MMePoSystemDelete -SystemID ($t[1..$t.count].parentid -join ',') | ft -autosize}
 
     The initial command lists all duplicate systems in the ePo DB using ePo query, then groups them by the system names, and the result stores into the variable $dupl.
-    The next command runs through array $dupl, gots all the systems with the same name, order them by LastUpdate property descending and the result saves into the temporary array $t.
-    Then we take the all systems from the array $t except for the index 0 (the systems in the index 0 are the last communicated systems with the ePo server).
-    At the end, we get the ParentIDs from these systems, and these IDs we will use in the command Remove-MMePoSystemDelete.
+    The next command runs through array $dupl, got all the systems with the same name, order them by LastUpdate property descending and the result saves into the temporary array $t.
+    Finaly we take the all systems from the array $t except for the index 0 (the systems in the index 0 are the last communicated systems with the ePo server), get the ParentIDs from these systems, and these IDs we will use in the command Remove-MMePoSystemDelete.
     #>
 
 #### Set-MMePoSystemApplyTag

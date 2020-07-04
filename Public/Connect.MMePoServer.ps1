@@ -12,7 +12,7 @@ function Connect-MMePoServer
         Port             = 8443
         URL              = "https://eposerver01:8443/remote"
         Credential       = <entered credential)
-        SecurityProtocol = Set-TLs12
+        SecurityProtocol = $([Net.ServicePointManager]::SecurityProtocol)
         Connected        = $false
         The command will try to get the version of the ePo server by command Get-MMePoVersion.
         If the Get-MMePoVersion returns the value, $ePoVar.Connected will change to $True
