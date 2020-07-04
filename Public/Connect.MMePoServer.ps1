@@ -12,7 +12,7 @@ function Connect-MMePoServer
         Port             = 8443
         URL              = "https://eposerver01:8443/remote"
         Credential       = <entered credential)
-        SecurityProtocol = Enable-TLs12
+        SecurityProtocol = Set-TLs12
         Connected        = $false
         The command will try to get the version of the ePo server by command Get-MMePoVersion.
         If the Get-MMePoVersion returns the value, $ePoVar.Connected will change to $True
@@ -34,7 +34,11 @@ function Connect-MMePoServer
         [Parameter(Position = 2)]
         [ValidateNotNullOrEmpty()]
         [PSCredential]
-        $Credential = (Get-Credential -Message "Enter credentials to connect to ePo server:")
+        $Credential = (Get-Credential -Message "Enter credentials to connect to ePo server:"),
+        # Set TLS 1.2 as only protocol
+        [Parameter(Position = 3)]
+        [Switch]
+        $SetTls12
     )
 
     $Script:ePoVar = [PSCustomObject]@{
@@ -42,8 +46,12 @@ function Connect-MMePoServer
         Port             = $Port
         URL              = "https://$($ServerName):$($Port)/remote"
         Credential       = $Credential
-        SecurityProtocol = Enable-TLs12
+        SecurityProtocol = $([Net.ServicePointManager]::SecurityProtocol)
         Connected        = $false
+    }
+
+    if ($SetTls12) {
+        $ePoVar.SecurityProtocol = Set-TLs12
     }
 
     Disable-SslVerification

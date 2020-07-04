@@ -1,7 +1,7 @@
 ﻿# Internal functions
 . $PSScriptRoot\Internal\Disable.SslVerification.ps1
 . $PSScriptRoot\Internal\Enable.SslVerification.ps1
-. $PSScriptRoot\Internal\Enable.TLs12.ps1
+. $PSScriptRoot\Internal\Set.TLs12.ps1
 . $PSScriptRoot\Internal\TestConnectioToePoServer.ps1
 . $PSScriptRoot\Internal\WebRequest.ps1
 

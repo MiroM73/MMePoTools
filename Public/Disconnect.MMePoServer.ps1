@@ -1,7 +1,10 @@
 function Disconnect-MMePoServer
 {
     #Return setup for SecurityProtocol to previous state
-    [Net.ServicePointManager]::SecurityProtocol = $ePoVar.SecurityProtocol
+    if ([Net.ServicePointManager]::SecurityProtocol -ne $ePoVar.SecurityProtocol)
+    {
+        [Net.ServicePointManager]::SecurityProtocol = $ePoVar.SecurityProtocol
+    }
 
     #Remove ePoVar
     Remove-Variable -Name ePoVar -Scope Script
