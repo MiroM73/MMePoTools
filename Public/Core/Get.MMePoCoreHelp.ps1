@@ -51,7 +51,8 @@ function Get-MMePoCoreHelp
     }
     else
     {
-        $Url = "$($ePoVar.URL)/core.help"
+		$Url = "$($ePoVar.URL)/core.help"
+		if ($DisplayAll) { $Url = "$($ePoVar.URL)/core.help?showHidden=1" }
         $EpoQuery = WebRequest -Uri $Url -Credential $ePoVar.Credential
         #(?s) ... single line mode and [dot] . always search end of line [\n]
         #(?i) ... case insensitive
