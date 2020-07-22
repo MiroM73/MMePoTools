@@ -1,6 +1,7 @@
 # MMePoTools
 
 - [MMePoTools](#mmepotools)
+  - [How to install](#how-to-install)
   - [Commandlets](#commandlets)
     - [Connect/Disconnect](#connectdisconnect)
       - [Connect-MMePoServer](#connect-mmeposerver)
@@ -16,6 +17,8 @@
       - [Invoke-MMePoCoreExecuteQuery](#invoke-mmepocoreexecutequery)
     - [epo](#epo)
       - [Get-MMePoGetVersion](#get-mmepogetversion)
+    - [Policy](#policy)
+      - [Get-MMePoPolicyExport](#get-mmepopolicyexport)
     - [Scheduler](#scheduler)
       - [Get-MMePoSchedulerGetServerTask](#get-mmeposchedulergetservertask)
       - [Get-MMePoSchedulerListAllServerTasks](#get-mmeposchedulerlistallservertasks)
@@ -29,12 +32,12 @@
       - [Set-MMePoSystemApplyTag](#set-mmeposystemapplytag)
 
 ## How to install
-  
+
   - Download the zip
   - Extract to folder to : C:\Program Files\WindowsPowerShell\Modules\MMePoTools
   - Unblock all the powershell files : dir -Path "C:\Program Files\WindowsPowerShell\Modules\MMePoTools" -Recurse | Unblock-File
   - Install module in Powershell : Import-Module -name MMePoTools
-  
+
   - Test installation, open a Powershell try : Connect-MMePoServer -ServerName ePOSERVERNAME
 
 ## Commandlets
@@ -244,6 +247,20 @@
      .DESCRIPTION
      Gets the ePO version.
      Requires admin rights on the ePo server.
+    #>
+
+### Policy
+#### Get-MMePoPolicyExport
+
+    <#
+    .SYNOPSIS
+    View / Export client policy.
+    .DESCRIPTION
+    View / Exports client Policy
+    Requires view permission for at least one product.
+    .EXAMPLE
+    Get-MMePoPolicyExport -FolderPath c:\temp
+    Export the client Policy configuration in to the c:\temp\export.xml on local machine.
     #>
 
 ### Scheduler
