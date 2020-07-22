@@ -12,7 +12,7 @@
 	RootModule        = 'main.psm1'
 
 	# Version number of this module.
-	ModuleVersion     = '2.0'
+	ModuleVersion     = '2.1'
 
 	# ID used to uniquely identify this module
 	GUID              = 'e4112b65-870e-4169-ba0a-55daf5b5294b'
@@ -94,6 +94,6 @@
 	# HelpInfoURI = ''
 
 	# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-	# DefaultCommandPrefix = 'ePo'
+	# DefaultCommandPrefix = ''
 
 }
