@@ -28,6 +28,15 @@
       - [Remove-MMePoSystemDelete](#remove-mmeposystemdelete)
       - [Set-MMePoSystemApplyTag](#set-mmeposystemapplytag)
 
+## How to install
+  
+  - Download the zip
+  - Extract to folder to : C:\Program Files\WindowsPowerShell\Modules\MMePoTools
+  - Unblock all the powershell files : dir -Path "C:\Program Files\WindowsPowerShell\Modules\MMePoTools" -Recurse | Unblock-File
+  - Install module in Powershell : Import-Module -name MMePoTools
+  
+  - Test installation, open a Powershell try : Connect-MMePoServer -ServerName ePOSERVERNAME
+
 ## Commandlets
 ### Connect/Disconnect
 #### Connect-MMePoServer

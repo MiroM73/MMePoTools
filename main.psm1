@@ -14,6 +14,9 @@
 . $PSScriptRoot\Public\ClientTasks\Get.MMePoClientTaskFind.ps1
 . $PSScriptRoot\Public\ClientTasks\Invoke.MMePoClientTaskRun.ps1
 
+# Public\Policy functions
+. $PSScriptRoot\Public\Policy\Get.MMePoPolicyExport.ps1
+
 # Public\Core functions
 . $PSScriptRoot\Public\Core\Get.MMePoCoreHelp.ps1
 . $PSScriptRoot\Public\Core\Get.MMePoCoreListPermSets.ps1
