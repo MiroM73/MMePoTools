@@ -12,7 +12,7 @@
 	RootModule        = 'main.psm1'
 
 	# Version number of this module.
-	ModuleVersion     = '2.1'
+	ModuleVersion     = '2.2'
 
 	# ID used to uniquely identify this module
 	GUID              = 'e4112b65-870e-4169-ba0a-55daf5b5294b'
@@ -70,7 +70,7 @@
 		'Get-MMePoCoreListQueries', 'Get-MMePoGetVersion', 'Get-MMePoSchedulerGetServerTask', 'Get-MMePoSchedulerListAllServerTasks',
 		'Get-MMePoSystemFind', 'Get-MMePoSystemFindGroup', 'Get-MMePoSystemFindTag', 'Set-MMePoSystemApplyTag', 'Remove-MMePoSystemClearTag',
 		'Invoke-MMePoCoreExecuteQuery', 'Move-MMePoSystemMove', 'Get-MMePoClientTaskFind', 'Invoke-MMePoClientTaskRun',
-		'Get-MMePoClientTaskExport','Get-MMePoPolicyExport', 'Remove-MMePoSystemDelete')
+        'Get-MMePoClientTaskExport', 'Get-MMePoPolicyExport', 'Get-MMePoPolicyFind', 'Remove-MMePoSystemDelete')
 
 	# Cmdlets to export from this module
 	CmdletsToExport   = @()
@@ -95,5 +95,4 @@
 
 	# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 	# DefaultCommandPrefix = ''
-
 }

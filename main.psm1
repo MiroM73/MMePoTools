@@ -16,6 +16,7 @@
 
 # Public\Policy functions
 . $PSScriptRoot\Public\Policy\Get.MMePoPolicyExport.ps1
+. $PSScriptRoot\Public\Policy\Get.MMePoPolicyFind.ps1
 
 # Public\Core functions
 . $PSScriptRoot\Public\Core\Get.MMePoCoreHelp.ps1

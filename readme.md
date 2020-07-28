@@ -86,14 +86,7 @@
     Export the client tasks configuration in to the c:\reports\export.xml file on the ePo server.
     .EXAMPLE
     PS C:\>Get-MMePoClientTaskExport -FileName "export$(([datetime]::now).tostring("yyyyMMddhhmmss"))"
-    Export the client tasks configuration in to the c:\reports\exportACTUALDATETIME.xml file on the ePo server.
-    .EXAMPLE
-    PS C:\>Get-MMePoClientTaskExport -Name 'ens' | select name, {$_.Section.BuildVersion}, {$_.Section.PackagePathType}
-    Name                                 $_.Section.BuildVersion $_.Section.PackagePathType
-    ----                                 ----------------------- --------------------------
-    Install ENS Threat Prevention        10.6.11208              Current
-    Install ENS Threat Prevention macOS  10.6.5101               Current
-    Install ENS Threat Prevention (EVAL) 10.6.11666              Evaluation
+    Export the client tasks configuration in to the c:\reports\exportACTUALDATETIME.xml file on the ePo server.    
     #>
 
 #### Get-MMePoClientTaskFind
@@ -250,17 +243,53 @@
     #>
 
 ### Policy
+#### Get-MMePoPolicyFind
+
+    <#
+     .SYNOPSIS
+     Finds policies filtered by specified search text.
+     .DESCRIPTION
+     policy.find [searchText]
+     Finds policies filtered by specified search text in all  policy properties
+     featureId, featureName, objectId, objectName,  objectNotes
+     Requires view permission for at least one product
+     Parameters:
+     searchText (param 1) - Search text. Wildcards and  regular expressions are not
+     supported.
+     .EXAMPLE
+     Get-MMePoPolicyFind "policyname"
+     Find the all policy configurations with "policyname"  string.
+     .EXAMPLE
+     Get-MMePoPolicyFind -PolicyName 'VIRUS' | ft -AutoSize
+    #>
+
 #### Get-MMePoPolicyExport
 
     <#
     .SYNOPSIS
-    View / Export client policy.
+    Export client policy.
     .DESCRIPTION
-    View / Exports client Policy
-    Requires view permission for at least one product.
+    policy.export productId [fileName]
+    Exports policies to an XML file in export folder
+    Requires view permission for at least one product
+    Parameters:
+    productId (param 1) - Product ID as returned by policy.find command
+    fileName (param 2) - Location within the export folder for the XML file to be
+    stored, e.g. foo.xml, foo/foo.xml, etc.
     .EXAMPLE
-    Get-MMePoPolicyExport -FolderPath c:\temp
-    Export the client Policy configuration in to the c:\temp\export.xml on local machine.
+    Get-MMePoPolicyExport -ProductID 'VIRUSCAN8800' -FolderPath c:\temp
+    Export the policy configuration for ProductID VIRUSSCAN8800
+    in to the c:\temp\MMePoPolicyExport\export.xml on local machine.
+    If file with the export already exists in the export folder, the filen will be rewritted.
+    .EXAMPLE
+    (Get-MMePoPolicyFind VIRUSCAN8800 | group productId).name | Get-MMePoPolicyExport -FolderPath c:\temp
+    Export the policy configuration for ProductID VIRUSSCAN8800
+    in to the c:\temp\MMePoPolicyExport\ folder on the local machine.
+    If file with the export already exists in the export folder, the file will be rewritted.
+    .EXAMPLE
+    (Get-MMePoPolicyFind | group productId).name | Get-MMePoPolicyExport -FolderPath c:\temp
+    Export all the policy configurations in to the c:\temp\MMePoPolicyExport\export.xml on local machine.
+    If files with the exports already exist in the export folder, the files will be rewritted.
     #>
 
 ### Scheduler
