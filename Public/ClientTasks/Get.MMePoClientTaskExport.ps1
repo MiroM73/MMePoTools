@@ -19,13 +19,6 @@ function Get-MMePoClientTaskExport
     .EXAMPLE
     Get-MMePoClientTaskExport -FileName "export$(([datetime]::now).tostring("yyyyMMddhhmmss"))"
     Export the client tasks configuration in to the c:\reports\exportACTUALDATETIME.xml file on the ePo server.
-    .EXAMPLE
-    Get-MMePoClientTaskExport -Name 'ens' | select name, {$_.Section.BuildVersion}, {$_.Section.PackagePathType}
-    Name                                 $_.Section.BuildVersion $_.Section.PackagePathType
-    ----                                 ----------------------- --------------------------
-    Install ENS Threat Prevention        10.6.11208              Current
-    Install ENS Threat Prevention macOS  10.6.5101               Current
-    Install ENS Threat Prevention (EVAL) 10.6.11666              Evaluation
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'Name')]
