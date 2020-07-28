@@ -18,6 +18,7 @@
     - [epo](#epo)
       - [Get-MMePoGetVersion](#get-mmepogetversion)
     - [Policy](#policy)
+      - [Get-MMePoPolicyFind](#get-mmepopolicyfind)
       - [Get-MMePoPolicyExport](#get-mmepopolicyexport)
     - [Scheduler](#scheduler)
       - [Get-MMePoSchedulerGetServerTask](#get-mmeposchedulergetservertask)
