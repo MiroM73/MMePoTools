@@ -66,8 +66,9 @@
 	# NestedModules = @()
 
 	# Functions to export from this module
-	FunctionsToExport = @('Connect-MMePoServer', 'Disconnect-MMePoServer', 'Get-MMePoCoreHelp', 'Get-MMePoCoreListPermSets',
-		'Get-MMePoCoreListQueries', 'Get-MMePoGetVersion', 'Get-MMePoSchedulerGetServerTask', 'Get-MMePoSchedulerListAllServerTasks',
+    FunctionsToExport = @('Connect-MMePoServer', 'Disconnect-MMePoServer', 'Get-MMePoCoreExportPermissionSets',
+        'Get-MMePoCoreHelp', 'Get-MMePoCoreListPermSets', 'Get-MMePoCoreListQueries', 'Get-MMePoCoreListUsers',
+        'Get-MMePoGetVersion', 'Get-MMePoRepositoryFind', 'Get-MMePoSchedulerGetServerTask', 'Get-MMePoSchedulerListAllServerTasks',
 		'Get-MMePoSystemFind', 'Get-MMePoSystemFindGroup', 'Get-MMePoSystemFindTag', 'Set-MMePoSystemApplyTag', 'Remove-MMePoSystemClearTag',
 		'Invoke-MMePoCoreExecuteQuery', 'Move-MMePoSystemMove', 'Get-MMePoClientTaskFind', 'Invoke-MMePoClientTaskRun',
         'Get-MMePoClientTaskExport', 'Get-MMePoPolicyExport', 'Get-MMePoPolicyFind', 'Remove-MMePoSystemDelete')

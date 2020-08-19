@@ -23,9 +23,14 @@
 . $PSScriptRoot\Public\Core\Get.MMePoCoreListPermSets.ps1
 . $PSScriptRoot\Public\Core\Get.MMePoCoreListQueries.ps1
 . $PSScriptRoot\Public\Core\Invoke.MMePoCoreExecuteQuery.ps1
+. $PSScriptRoot\Public\Core\Get.MMePoCoreExportPermissionSets.ps1
+. $PSScriptRoot\Public\Core\Get.MMePoCoreListUsers.ps1
 
 # Public\ePo functions
 . $PSScriptRoot\Public\ePo\Get.MMePoGetVersion.ps1
+
+# Public\Repository functions
+. $PSScriptRoot\Public\Repository\Get.MMePoRepositoryFind.ps1
 
 # Public\Scheduler functions
 . $PSScriptRoot\Public\Scheduler\Get.MMePoSchedulerGetServerTask.ps1

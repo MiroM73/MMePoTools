@@ -11,15 +11,19 @@
       - [Get-MMePoClientTaskFind](#get-mmepoclienttaskfind)
       - [Invoke-MMePoClientTaskRun](#invoke-mmepoclienttaskrun)
     - [Core](#core)
+      - [Get-MMePoCoreExportPermissionSets](#get-mmepocoreexportpermissionsets)
       - [Get-MMePoCoreHelp](#get-mmepocorehelp)
       - [Get-MMePoCoreListPermSets](#get-mmepocorelistpermsets)
       - [Get-MMePoCoreListQueries](#get-mmepocorelistqueries)
+      - [Get-MMePoCoreListUsers](#get-mmepocorelistusers)
       - [Invoke-MMePoCoreExecuteQuery](#invoke-mmepocoreexecutequery)
     - [epo](#epo)
       - [Get-MMePoGetVersion](#get-mmepogetversion)
     - [Policy](#policy)
       - [Get-MMePoPolicyFind](#get-mmepopolicyfind)
       - [Get-MMePoPolicyExport](#get-mmepopolicyexport)
+    - [Repository](#repository)
+      - [Get-MMePoRepositoryFind](#get-mmeporepositoryfind)
     - [Scheduler](#scheduler)
       - [Get-MMePoSchedulerGetServerTask](#get-mmeposchedulergetservertask)
       - [Get-MMePoSchedulerListAllServerTasks](#get-mmeposchedulerlistallservertasks)
@@ -87,7 +91,7 @@
     Export the client tasks configuration in to the c:\reports\export.xml file on the ePo server.
     .EXAMPLE
     PS C:\>Get-MMePoClientTaskExport -FileName "export$(([datetime]::now).tostring("yyyyMMddhhmmss"))"
-    Export the client tasks configuration in to the c:\reports\exportACTUALDATETIME.xml file on the ePo server.    
+    Export the client tasks configuration in to the c:\reports\exportACTUALDATETIME.xml file on the ePo server.
     #>
 
 #### Get-MMePoClientTaskFind
@@ -112,6 +116,24 @@
     #>
 
 ### Core
+
+#### Get-MMePoCoreExportPermissionSets
+
+    <#
+    .SYNOPSIS
+    Exports all permission sets.
+    .DESCRIPTION
+    Exports all permission sets. Returns the permission sets as a string of XML or throws on error.
+    Requires administrator rights.
+    Default output is user's console.
+    .EXAMPLE
+    PS>Get-MMePoCoreExportPermissionSets
+    Displays the all permission sets to the user's console.
+    .EXAMPLE
+    PS>Get-MMePoCoreExportPermissionSets > x:\ePo_perm_sets.xml
+    Redirects the all permission sets output into the x:\ePo_perm_sets.xml file.
+    #>
+
 #### Get-MMePoCoreHelp
 
     <#
@@ -145,10 +167,11 @@
 
     <#
     .SYNOPSIS
-    Get all user permission sets
+    List permission sets
     .DESCRIPTION
-    List permission sets in the system.
-    Requires administrator rights.
+    List permission sets in the system optionally filtered by username or id.
+    Note: Dynamically assigned permission sets are not represented. Returns the list of permission sets or throws on error.
+    Requires global administrator privilege.
     #>
 
 #### Get-MMePoCoreListQueries
@@ -207,6 +230,22 @@
         None
     .OUTPUTS
         PSCustomObject
+    #>
+
+#### Get-MMePoCoreListUsers
+
+    <#
+    .SYNOPSIS
+    List users in the system
+    .DESCRIPTION
+    List users in the system optionally filtered by permission set name or id.
+    Returns the list of users or throws on error.
+    Requires administrator rights.
+    Parameters:
+        [permSetName (param 1) | permSetId] - Either the unique id or name of the permission set
+    .EXAMPLE
+    PS>Get-MMePoCoreListUsers
+    list all ePo users
     #>
 
 #### Invoke-MMePoCoreExecuteQuery
@@ -291,6 +330,24 @@
     (Get-MMePoPolicyFind | group productId).name | Get-MMePoPolicyExport -FolderPath c:\temp
     Export all the policy configurations in to the c:\temp\MMePoPolicyExport\export.xml on local machine.
     If files with the exports already exist in the export folder, the files will be rewritted.
+    #>
+
+### Repository
+#### Get-MMePoRepositoryFind
+
+    <#
+    .SYNOPSIS
+    Finds repositories filtered by specified search text.
+    .DESCRIPTION
+    Finds repositories filtered by specified search text.
+    Requires repository view permission.
+    searchText (param 1) - Search text. Wildcards and regular expressions are not supported.
+    .EXAMPLE
+    PS>Get-MMePoRepositoryFind
+    list all repositories
+    .EXAMPLE
+    PS>Get-MMePoRepositoryFind -SearchText asdfg
+    list repositories containing asdfg text in their names
     #>
 
 ### Scheduler
