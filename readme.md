@@ -35,6 +35,8 @@
       - [Remove-MMePoSystemClearTag](#remove-mmeposystemcleartag)
       - [Remove-MMePoSystemDelete](#remove-mmeposystemdelete)
       - [Set-MMePoSystemApplyTag](#set-mmeposystemapplytag)
+    - [Other](#other)
+      - [Get-MMePoOndemanScanReport](#get-mmepoondemanscanreport)
 
 ## How to install
 
@@ -556,4 +558,34 @@
     Assign the given tag to a supplied list of systems. System list can contain
     names, IP addresses or IDs.
     Requires Tag use permission.
+    #>
+
+### Other
+#### Get-MMePoOndemanScanReport
+
+    <#
+    .SYNOPSIS
+    Get the info about the OnDemand Scan tasks running on the computers from thier OnDemandScan_Activity.log files.
+    .DESCRIPTION
+    This command retrieves a data from the OnDemand Scan log file/s on the computer/s.
+    This log file (OnDemandScan_Activity.log) is located on the computer
+    in the folder 'c:\programdata\mcafee\endpoint security\logs' by default.
+    The path can be changed in the property $OnDemandLogPath.
+    The command is looking for 'scan started' or 'scan resumed' messages in the log
+    and from this line returns all next lines till the line matched
+    'scan completed' or 'scan stopped' or 'scan auto paused' patterns.
+    .EXAMPLE
+    Get-MMePoOndemanScanReport -ComputerName comp1,comp2,comp3
+    Returns all ondemand scan informations from comp1 ... comp3 computers.
+    The every event is reported as an object and can be further processed through the pipe,
+    or added to a variable.
+    .EXAMPLE
+    Get-MMePoOndemanScanReport -ComputerName omp1,comp2,comp3 | ? DateTime -gt ((get-date).AddHours(-1)) | ft
+    Returns all ondemand scan informations from comp1 ... comp3 computers and filters out only last hour.
+    The result is displayed as the table.
+    .INPUTS
+    [string[]] for $ComputerName
+    [string]$OnDemandLogPath cannot be pipped into this cmdlet
+    .OUTPUTS
+    System.Array Output from this cmdlet is array of pscustom objects
     #>

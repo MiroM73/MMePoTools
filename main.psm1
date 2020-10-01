@@ -44,3 +44,6 @@
 . $PSScriptRoot\Public\System\Remove.MMePoSystemClearTag.ps1
 . $PSScriptRoot\Public\System\Remove.MMePoSystemDelete.ps1
 . $PSScriptRoot\Public\System\Set.MMePoSystemApplyTag.ps1
+
+#Public\Other functions
+. $PSScriptRoot\Public\Other\Get-MMePoOndemanScanReport.ps1
