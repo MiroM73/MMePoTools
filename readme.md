@@ -465,6 +465,7 @@
     .DESCRIPTION
     Move systems to a specified destination group by the name or the ID as returned by the function Get-MMePoSystemFind.
     The ID of the destination group can be find by the function Get-MMePoSystemFindGroup.
+    AutoSort param - If true, system is enabled for sorting. Defaults to false.
     #>
 
 #### Remove-MMePoSystemClearTag

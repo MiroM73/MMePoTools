@@ -6,6 +6,7 @@ function Move-MMePoSystemMove
     .DESCRIPTION
     Move systems to a specified destination group by the name or the ID as returned by the function Get-MMePoSystemFind.
     The ID of the destination group can be find by the function Get-MMePoSystemFindGroup.
+    AutoSort param - If true, system is enabled for sorting. Defaults to false.
     #>
 
     [CmdletBinding()]
@@ -34,14 +35,27 @@ function Move-MMePoSystemMove
             ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
         [int]
-        $ParentGroupID
+        $ParentGroupID,
+
+        [Parameter(ParameterSetName = "SystemID")]
+        [Parameter(ParameterSetName = "SystemName")]
+        [switch]
+        $AutoSort = $false
     )
 
     begin
     {
         TestConnectioToePoServer
         $Systems = $SystemName -join '%2C'
-        $Url = "$($ePoVar.URL)/system.move?names=$Systems&parentGroupId=$($ParentGroupID)&:output=json"
+        if ($AutoSort)
+        {
+            $Url = "$($ePoVar.URL)/system.move?names=$Systems&parentGroupId=$($ParentGroupID)&autoSort=1&:output=json"
+        }
+        else
+        {
+            $Url = "$($ePoVar.URL)/system.move?names=$Systems&parentGroupId=$($ParentGroupID)&autoSort=0&:output=json"
+        }
+        Write-Verbose $Url
     }
     process
     {
