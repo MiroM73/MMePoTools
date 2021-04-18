@@ -81,7 +81,7 @@ function Get-MMePoOndemanScanReport
             }
             catch
             {
-                $_
+                #$_
             }
         }
     }
